@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const UIContainer = styled.div`
   max-width: 800px;
   margin: 30px auto;
 `;
