@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Container, CardImg, CardInfo, CardComment, CommentCounter, CardLink } from './styles';
 
 function PromotionCard({ promotion }) {
@@ -19,6 +19,7 @@ function PromotionCard({ promotion }) {
                 {promotion.comments.length > 1 ? 'Comentários' : 'Comentário'}
               </CommentCounter>
               <CardLink href={promotion.url} target="_blank" >Ir para o site</CardLink>
+              <Link to={`/edit/${promotion.id}`}>Editar</Link>
             </footer>
           </CardInfo>
       </Container>

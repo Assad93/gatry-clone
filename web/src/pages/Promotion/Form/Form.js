@@ -8,7 +8,7 @@ function PagesPromotionForm() {
   const { id } = useParams(); //catch the params in url
   return (
       <UIContainer>
-          <PromotionForm />
+          <PromotionForm id={id ? Number.parseInt(id, 10) : null}/>
       </UIContainer>
   );
 }
