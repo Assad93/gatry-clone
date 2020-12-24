@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PromotionCard from 'components/Promotion/Card';
 import { Container } from './styles';
-import UIModal from 'components/UI/Modal/Modal';
+import PromotionModal from '../Modal';
 
 function PromotionList({ loading, error,  promotions }) {
   const [promotionId, setPromotionId] = useState(null);
@@ -20,19 +20,20 @@ function PromotionList({ loading, error,  promotions }) {
   return (
       <Container>
         {promotions.map(promotion => {
-          return <PromotionCard 
+          return <PromotionCard
+                    key={promotion.id}
                     promotion={promotion} 
                     onClickComments={ ()=> {
                       setPromotionId(promotion.id)
                     }}
                  />
         })}
-        <UIModal 
-          isOpen={Boolean(promotionId)} 
-          onCLickClose={() => { setPromotionId(null) }}
-        >
-          <h1>Comentários</h1>
-        </UIModal>
+        {promotionId && (
+            <PromotionModal 
+              promotionId={promotionId} 
+              onCLickClose={() => { setPromotionId(null) }}
+            />
+        )}
       </Container>
   );
 }
